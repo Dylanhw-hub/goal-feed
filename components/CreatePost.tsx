@@ -44,6 +44,7 @@ function analyzeGoal(text: string): FeedbackChip[] {
 export default function CreatePost({ onPublish, delay }: CreatePostProps) {
   const [text, setText] = useState('')
   const [published, setPublished] = useState(false)
+  const [finalized, setFinalized] = useState(false)
 
   const chips = useMemo(() => analyzeGoal(text), [text])
   const metCount = chips.filter(c => c.met).length
@@ -52,6 +53,19 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
   const handlePublish = () => {
     if (text.trim().length < 10) return
     setPublished(true)
+    // Only trigger completion if all elements are met
+    if (allMet) {
+      setFinalized(true)
+      onPublish?.(text)
+    }
+  }
+
+  const handleEdit = () => {
+    setPublished(false)
+  }
+
+  const handleKeepAsIs = () => {
+    setFinalized(true)
     onPublish?.(text)
   }
 
@@ -109,18 +123,46 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
             )}
           </motion.div>
 
-          {/* Fake reactions from characters */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-3 flex items-center gap-2"
-          >
-            <span className="text-sm">❤️ 🔥 💪</span>
-            <span className="text-xs text-white/30">
-              Rea, Naledi, and {allMet ? '47 others' : '12 others'} reacted
-            </span>
-          </motion.div>
+          {/* Action buttons — edit or keep */}
+          {!finalized && !allMet && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-4 space-y-2"
+            >
+              <button
+                onClick={handleEdit}
+                className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:brightness-110 active:scale-[0.98]"
+                style={{
+                  background: 'linear-gradient(135deg, #fe2c55, #25f4ee)',
+                }}
+              >
+                ✏️ Edit your goal
+              </button>
+              <button
+                onClick={handleKeepAsIs}
+                className="w-full py-2 text-xs text-white/30 hover:text-white/50 transition-colors"
+              >
+                Keep as is →
+              </button>
+            </motion.div>
+          )}
+
+          {/* Fake reactions from characters — only show when finalized or all met */}
+          {(finalized || allMet) && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="mt-3 flex items-center gap-2"
+            >
+              <span className="text-sm">❤️ 🔥 💪</span>
+              <span className="text-xs text-white/30">
+                Rea, Naledi, and {allMet ? '47 others' : '12 others'} reacted
+              </span>
+            </motion.div>
+          )}
         </div>
       </PostCard>
     )
