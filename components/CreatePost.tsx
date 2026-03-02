@@ -61,15 +61,15 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
         <div className="p-4">
           {/* Published post */}
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-sm font-bold ring-2 ring-white">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#fe2c55] to-[#25f4ee] flex items-center justify-center text-white text-sm font-bold ring-2 ring-[#111]">
               You
             </div>
             <div>
               <span className="font-bold text-sm">You</span>
-              <span className="text-xs text-gray-400 ml-2">just now</span>
+              <span className="text-xs text-white/30 ml-2">just now</span>
             </div>
           </div>
-          <p className="text-[15px] leading-relaxed whitespace-pre-line mb-3">{text}</p>
+          <p className="text-[15px] leading-relaxed whitespace-pre-line mb-3 text-white/90">{text}</p>
 
           {/* Score chips */}
           <div className="flex flex-wrap gap-1.5 mb-3">
@@ -78,8 +78,8 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
                 key={chip.label}
                 className={`text-xs font-medium px-2.5 py-1 rounded-full ${
                   chip.met
-                    ? 'bg-emerald-100 text-emerald-700'
-                    : 'bg-gray-100 text-gray-400'
+                    ? 'bg-[#00f593]/15 text-[#00f593]'
+                    : 'bg-white/5 text-white/30'
                 }`}
               >
                 {chip.met ? '✓' : '○'} {chip.label}
@@ -94,18 +94,18 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
             transition={{ delay: 0.3 }}
             className={`p-3.5 rounded-xl text-sm leading-relaxed ${
               allMet
-                ? 'bg-emerald-50 border border-emerald-200'
+                ? 'bg-[#00f593]/10 border border-[#00f593]/20'
                 : metCount >= 2
-                  ? 'bg-amber-50 border border-amber-200'
-                  : 'bg-purple-50 border border-purple-200'
+                  ? 'bg-[#fffc00]/8 border border-[#fffc00]/15'
+                  : 'bg-[#fe2c55]/8 border border-[#fe2c55]/15'
             }`}
           >
             {allMet ? (
-              <><span className="font-bold">🔥 This goal is fire.</span> You nailed all four elements — specific action, frequency, deadline, and accountability. This is a goal that drives real change.</>
+              <><span className="font-bold text-white">🔥 This goal is fire.</span> <span className="text-white/70">You nailed all four elements — specific action, frequency, deadline, and accountability. This is a goal that drives real change.</span></>
             ) : metCount >= 2 ? (
-              <><span className="font-bold">💪 Solid start!</span> You hit {metCount} of 4 elements. Try adding {chips.filter(c => !c.met).map(c => c.label.toLowerCase()).join(' and ')} to make it even stronger.</>
+              <><span className="font-bold text-white">💪 Solid start!</span> <span className="text-white/70">You hit {metCount} of 4 elements. Try adding {chips.filter(c => !c.met).map(c => c.label.toLowerCase()).join(' and ')} to make it even stronger.</span></>
             ) : (
-              <><span className="font-bold">🤔 You can level this up.</span> Right now it&apos;s more of a wish than a plan. Try making it more specific — what exactly will you do, how often, and by when?</>
+              <><span className="font-bold text-white">🤔 You can level this up.</span> <span className="text-white/70">Right now it&apos;s more of a wish than a plan. Try making it more specific — what exactly will you do, how often, and by when?</span></>
             )}
           </motion.div>
 
@@ -117,7 +117,7 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
             className="mt-3 flex items-center gap-2"
           >
             <span className="text-sm">❤️ 🔥 💪</span>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-white/30">
               Rea, Naledi, and {allMet ? '47 others' : '12 others'} reacted
             </span>
           </motion.div>
@@ -130,13 +130,13 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
     <PostCard delay={delay}>
       <div className="p-4">
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-sm font-bold">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#fe2c55] to-[#25f4ee] flex items-center justify-center text-white text-sm font-bold">
             You
           </div>
-          <span className="text-sm font-bold text-gray-400">Your turn</span>
+          <span className="text-sm font-bold text-white/40">Your turn</span>
         </div>
 
-        <p className="text-sm text-gray-500 mb-3">
+        <p className="text-sm text-white/50 mb-3">
           Post your own goal. Make it real — specific action, frequency, deadline, accountability.
         </p>
 
@@ -144,7 +144,7 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Write your goal here... (e.g., 'Practice 5 stoichiometry problems every Tuesday and Thursday, review with Ms Nkosi on Fridays, target 60% by June exams')"
-          className="w-full min-h-[120px] p-3.5 rounded-xl border-2 border-gray-200 focus:border-purple-400 focus:ring-0 outline-none resize-none text-[15px] leading-relaxed placeholder:text-gray-300 transition-colors"
+          className="w-full min-h-[120px] p-3.5 rounded-xl border-2 border-white/10 bg-white/5 focus:border-[#fe2c55]/50 focus:ring-0 outline-none resize-none text-[15px] leading-relaxed placeholder:text-white/20 transition-colors text-white/90"
         />
 
         {/* Live feedback chips */}
@@ -163,8 +163,8 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
                     layout
                     className={`text-xs font-medium px-2.5 py-1 rounded-full transition-colors ${
                       chip.met
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : 'bg-gray-100 text-gray-400'
+                        ? 'bg-[#00f593]/15 text-[#00f593]'
+                        : 'bg-white/5 text-white/30'
                     }`}
                   >
                     {chip.met ? '✓' : '○'} {chip.label}
@@ -180,7 +180,7 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
           disabled={text.trim().length < 10}
           className="mt-3 w-full py-3 rounded-xl font-bold text-sm text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:brightness-110 active:scale-[0.98]"
           style={{
-            background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+            background: 'linear-gradient(135deg, #fe2c55, #25f4ee)',
           }}
         >
           Post your goal

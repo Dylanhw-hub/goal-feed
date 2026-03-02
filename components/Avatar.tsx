@@ -25,7 +25,7 @@ export default function Avatar({ characterId, size = 'md' }: AvatarProps) {
       }}
     >
       <div
-        className={`${sizes[size]} rounded-full bg-white flex items-center justify-center font-bold ring-2 ring-white`}
+        className={`${sizes[size]} rounded-full bg-[#111] flex items-center justify-center font-bold ring-2 ring-[#111]`}
       >
         {char.emoji}
       </div>

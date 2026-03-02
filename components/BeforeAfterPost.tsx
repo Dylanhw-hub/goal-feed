@@ -24,26 +24,26 @@ export default function BeforeAfterPost({ data, delay }: BeforeAfterPostProps) {
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-sm">{char.name}</span>
-              <span className="text-xs text-gray-400">{char.handle}</span>
+              <span className="text-xs text-white/30">{char.handle}</span>
             </div>
-            <span className="text-xs text-gray-400">{data.timeAgo}</span>
+            <span className="text-xs text-white/30">{data.timeAgo}</span>
           </div>
         </div>
 
         {/* Before card */}
         <div className="rounded-xl overflow-hidden">
-          <div className="bg-gray-50 p-4 border border-gray-200 rounded-t-xl">
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-wide">
+          <div className="bg-white/5 p-4 border border-white/10 rounded-t-xl">
+            <span className="text-xs font-bold text-white/40 uppercase tracking-wide">
               The goal
             </span>
-            <p className="text-[15px] mt-1.5 leading-relaxed">{data.before}</p>
+            <p className="text-[15px] mt-1.5 leading-relaxed text-white/80">{data.before}</p>
           </div>
 
           {/* Reveal button / After card */}
           {!revealed ? (
             <button
               onClick={() => setRevealed(true)}
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3.5 text-sm font-bold tracking-wide hover:brightness-110 active:scale-[0.99] transition-all"
+              className="w-full bg-gradient-to-r from-[#fe2c55] to-[#25f4ee] text-white py-3.5 text-sm font-bold tracking-wide hover:brightness-110 active:scale-[0.99] transition-all"
             >
               TAP TO SEE WHAT HAPPENED → {data.label}
             </button>
@@ -55,16 +55,16 @@ export default function BeforeAfterPost({ data, delay }: BeforeAfterPostProps) {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className={`p-4 border-x border-b rounded-b-xl ${
                   data.isPositive
-                    ? 'bg-emerald-50 border-emerald-200'
-                    : 'bg-red-50 border-red-200'
+                    ? 'bg-[#00f593]/8 border-[#00f593]/20'
+                    : 'bg-[#fe2c55]/8 border-[#fe2c55]/20'
                 }`}
               >
                 <span className={`text-xs font-bold uppercase tracking-wide ${
-                  data.isPositive ? 'text-emerald-600' : 'text-red-500'
+                  data.isPositive ? 'text-[#00f593]' : 'text-[#fe2c55]'
                 }`}>
                   {data.label}
                 </span>
-                <p className="text-[15px] mt-1.5 leading-relaxed">{data.after}</p>
+                <p className="text-[15px] mt-1.5 leading-relaxed text-white/80">{data.after}</p>
               </motion.div>
             </AnimatePresence>
           )}

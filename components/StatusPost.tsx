@@ -22,14 +22,14 @@ export default function StatusPost({ data, delay }: StatusPostProps) {
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-sm truncate">{char.name}</span>
-              <span className="text-gray-400 text-xs">{char.handle}</span>
+              <span className="text-white/30 text-xs">{char.handle}</span>
             </div>
-            <span className="text-xs text-gray-400">{data.timeAgo}</span>
+            <span className="text-xs text-white/30">{data.timeAgo}</span>
           </div>
         </div>
 
         {/* Body */}
-        <p className="text-[15px] leading-relaxed whitespace-pre-line">
+        <p className="text-[15px] leading-relaxed whitespace-pre-line text-white/90">
           {data.text}
         </p>
       </div>

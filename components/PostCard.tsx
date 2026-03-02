@@ -18,7 +18,7 @@ export default function PostCard({ children, delay = 0 }: PostCardProps) {
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
+      className="bg-[#111] rounded-2xl border border-white/5 overflow-hidden"
     >
       {children}
     </motion.article>

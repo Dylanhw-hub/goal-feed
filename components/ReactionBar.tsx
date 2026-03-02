@@ -26,17 +26,17 @@ export default function ReactionBar({ initialLikes = 0, initialComments = 0 }: R
         <span className={`text-xl transition-transform ${liked ? 'heart-pop' : ''}`}>
           {liked ? '❤️' : '🤍'}
         </span>
-        <span className={`font-medium ${liked ? 'text-red-500' : 'text-gray-500'}`}>
+        <span className={`font-medium ${liked ? 'text-[#fe2c55]' : 'text-white/40'}`}>
           {likes > 0 ? likes : ''}
         </span>
       </button>
       {initialComments > 0 && (
-        <div className="flex items-center gap-1.5 text-sm text-gray-500">
+        <div className="flex items-center gap-1.5 text-sm text-white/40">
           <span className="text-lg">💬</span>
           <span className="font-medium">{initialComments}</span>
         </div>
       )}
-      <button className="flex items-center gap-1.5 text-sm text-gray-500 ml-auto" aria-label="Share">
+      <button className="flex items-center gap-1.5 text-sm text-white/40 ml-auto" aria-label="Share">
         <span className="text-lg">📤</span>
       </button>
     </div>

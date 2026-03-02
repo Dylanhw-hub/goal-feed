@@ -36,14 +36,14 @@ export default function PollPost({ data, onVote, delay }: PollPostProps) {
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-sm">{char.name}</span>
-              <span className="text-xs text-gray-400">{char.handle}</span>
+              <span className="text-xs text-white/30">{char.handle}</span>
             </div>
-            <span className="text-xs text-gray-400">{data.timeAgo}</span>
+            <span className="text-xs text-white/30">{data.timeAgo}</span>
           </div>
         </div>
 
         {/* Question */}
-        <p className="text-[15px] leading-relaxed whitespace-pre-line mb-4">
+        <p className="text-[15px] leading-relaxed whitespace-pre-line mb-4 text-white/90">
           {data.question}
         </p>
 
@@ -56,33 +56,33 @@ export default function PollPost({ data, onVote, delay }: PollPostProps) {
               disabled={voted !== null}
               className={`w-full relative rounded-xl border-2 text-left transition-all overflow-hidden ${
                 voted === null
-                  ? 'border-gray-200 hover:border-purple-300 hover:bg-purple-50/50 active:scale-[0.98]'
+                  ? 'border-white/10 hover:border-[#fe2c55]/50 hover:bg-[#fe2c55]/5 active:scale-[0.98]'
                   : voted === idx
                     ? idx === data.correctIndex
-                      ? 'border-emerald-400 bg-emerald-50/50'
-                      : 'border-red-300 bg-red-50/30'
+                      ? 'border-[#00f593]/60 bg-[#00f593]/5'
+                      : 'border-[#fe2c55]/60 bg-[#fe2c55]/5'
                     : idx === data.correctIndex
-                      ? 'border-emerald-400 bg-emerald-50/50'
-                      : 'border-gray-100 opacity-60'
+                      ? 'border-[#00f593]/60 bg-[#00f593]/5'
+                      : 'border-white/5 opacity-40'
               }`}
             >
               {/* Background fill bar */}
               {voted !== null && (
                 <div
                   className={`absolute inset-y-0 left-0 poll-bar-fill rounded-xl ${
-                    idx === data.correctIndex ? 'bg-emerald-100/80' : 'bg-gray-100/80'
+                    idx === data.correctIndex ? 'bg-[#00f593]/15' : 'bg-white/5'
                   }`}
                   style={{ width: `${fakePercents[idx]}%` }}
                 />
               )}
 
               <div className="relative z-10 px-4 py-3 flex items-center justify-between gap-3">
-                <span className="text-sm font-medium">{option}</span>
+                <span className="text-sm font-medium text-white/90">{option}</span>
                 {voted !== null && (
                   <motion.span
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-sm font-bold shrink-0"
+                    className="text-sm font-bold shrink-0 text-white/70"
                   >
                     {fakePercents[idx]}%
                   </motion.span>
@@ -97,7 +97,7 @@ export default function PollPost({ data, onVote, delay }: PollPostProps) {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-xs text-gray-400 mt-2"
+            className="text-xs text-white/30 mt-2"
           >
             {data.totalVotes.toLocaleString()} votes
           </motion.p>
@@ -114,13 +114,13 @@ export default function PollPost({ data, onVote, delay }: PollPostProps) {
             >
               <div className={`mt-3 p-3.5 rounded-xl text-sm leading-relaxed ${
                 isCorrect
-                  ? 'bg-emerald-50 border border-emerald-200'
-                  : 'bg-amber-50 border border-amber-200'
+                  ? 'bg-[#00f593]/10 border border-[#00f593]/20'
+                  : 'bg-[#fffc00]/8 border border-[#fffc00]/15'
               }`}>
-                <span className="font-bold">
+                <span className="font-bold text-white">
                   {isCorrect ? '✅ You got it!' : '🤔 Not quite —'}
                 </span>{' '}
-                {data.explanation}
+                <span className="text-white/70">{data.explanation}</span>
               </div>
             </motion.div>
           )}

@@ -2,23 +2,25 @@
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --color-feed-bg: #fafafa;
-  --color-card: #ffffff;
-  --color-border: #e5e7eb;
-  --color-text: #111827;
-  --color-text-secondary: #6b7280;
-  --color-text-muted: #9ca3af;
-  --color-accent: #7c3aed;
-  --color-accent-light: #ede9fe;
-  --color-accent-dark: #5b21b6;
-  --color-gradient-start: #7c3aed;
-  --color-gradient-end: #ec4899;
-  --color-success: #10b981;
-  --color-success-light: #d1fae5;
-  --color-warning: #f59e0b;
-  --color-warning-light: #fef3c7;
-  --color-error: #ef4444;
-  --color-error-light: #fee2e2;
+  --color-feed-bg: #000000;
+  --color-card: #111111;
+  --color-card-raised: #1a1a1a;
+  --color-border: #222222;
+  --color-text: #f5f5f5;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #666666;
+  --color-accent: #fe2c55;
+  --color-accent-light: rgba(254, 44, 85, 0.15);
+  --color-gradient-start: #fe2c55;
+  --color-gradient-end: #25f4ee;
+  --color-success: #00f593;
+  --color-success-dim: rgba(0, 245, 147, 0.12);
+  --color-warning: #fffc00;
+  --color-warning-dim: rgba(255, 252, 0, 0.1);
+  --color-error: #fe2c55;
+  --color-error-dim: rgba(254, 44, 85, 0.12);
+  --color-cyan: #25f4ee;
+  --color-cyan-dim: rgba(37, 244, 238, 0.12);
 }
 
 html {
@@ -43,7 +45,7 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+  background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -51,7 +53,7 @@ body {
 
 /* Avatar gradient ring */
 .avatar-ring {
-  background: linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b);
+  background: linear-gradient(135deg, #fe2c55, #25f4ee);
   padding: 2.5px;
   border-radius: 9999px;
 }
@@ -97,6 +99,11 @@ body {
 
 .story-progress-fill {
   animation: storyProgress 5s linear forwards;
+}
+
+/* Neon glow effect */
+.neon-glow {
+  text-shadow: 0 0 10px rgba(254, 44, 85, 0.5), 0 0 40px rgba(254, 44, 85, 0.2);
 }
 
 /* Ensure iframe-friendly sizing */

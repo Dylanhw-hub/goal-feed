@@ -1,7 +1,6 @@
 'use client'
 
 import { characters, StoryData } from '@/data/content'
-import Avatar from './Avatar'
 
 interface StoryBarProps {
   stories: StoryData[]
@@ -12,7 +11,7 @@ interface StoryBarProps {
 
 export default function StoryBar({ stories, viewedStories, unlockedStories, onOpen }: StoryBarProps) {
   return (
-    <div className="bg-white border-b border-gray-100 px-4 py-3">
+    <div className="bg-[#111] border-b border-white/5 px-4 py-3">
       <div className="max-w-lg mx-auto flex gap-4 overflow-x-auto">
         {stories.map((story) => {
           const char = characters[story.characterId]
@@ -32,15 +31,15 @@ export default function StoryBar({ stories, viewedStories, unlockedStories, onOp
                 className="rounded-full p-[2.5px]"
                 style={{
                   background: viewed
-                    ? '#d1d5db'
+                    ? '#333'
                     : `linear-gradient(135deg, ${char.gradient[0]}, ${char.gradient[1]})`,
                 }}
               >
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-2xl ring-2 ring-white">
+                <div className="w-14 h-14 rounded-full bg-[#111] flex items-center justify-center text-2xl ring-2 ring-[#111]">
                   {char.emoji}
                 </div>
               </div>
-              <span className="text-[10px] font-medium text-gray-500 max-w-[64px] truncate">
+              <span className="text-[10px] font-medium text-white/50 max-w-[64px] truncate">
                 {story.label}
               </span>
             </button>
