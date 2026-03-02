@@ -33,7 +33,7 @@ export default function BeforeAfterPost({ data, delay }: BeforeAfterPostProps) {
         {/* Before card */}
         <div className="rounded-xl overflow-hidden">
           <div className="bg-white/5 p-4 border border-white/10 rounded-t-xl">
-            <span className="text-xs font-bold text-white/40 uppercase tracking-wide">
+            <span className="text-xs font-bold text-[#25f4ee]/50 uppercase tracking-wide">
               The goal
             </span>
             <p className="text-[15px] mt-1.5 leading-relaxed text-white/80">{data.before}</p>

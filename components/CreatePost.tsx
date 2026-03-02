@@ -133,10 +133,10 @@ export default function CreatePost({ onPublish, delay }: CreatePostProps) {
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#fe2c55] to-[#25f4ee] flex items-center justify-center text-white text-sm font-bold">
             You
           </div>
-          <span className="text-sm font-bold text-white/40">Your turn</span>
+          <span className="text-sm font-bold text-[#25f4ee]/60">Your turn</span>
         </div>
 
-        <p className="text-sm text-white/50 mb-3">
+        <p className="text-sm text-[#25f4ee]/50 mb-3">
           Post your own goal. Make it real — specific action, frequency, deadline, accountability.
         </p>
 

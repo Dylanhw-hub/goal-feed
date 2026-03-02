@@ -45,7 +45,7 @@ export default function DebatePost({ data, onAnswer, delay }: DebatePostProps) {
         </div>
 
         {/* Instruction */}
-        <p className="text-xs text-white/40 font-semibold uppercase tracking-wide mb-3">
+        <p className="text-xs text-[#25f4ee]/60 font-medium tracking-wide mb-3">
           {selected === null ? '💬 Tap the reply you agree with' : '💬 Replies'}
         </p>
 

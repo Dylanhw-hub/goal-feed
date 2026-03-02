@@ -18,9 +18,18 @@ export default function PostCard({ children, delay = 0 }: PostCardProps) {
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className="bg-[#111] rounded-2xl border border-white/5 overflow-hidden"
+      className="rounded-2xl"
     >
-      {children}
+      <div
+        className="rounded-2xl p-[1px]"
+        style={{
+          background: 'linear-gradient(135deg, rgba(254,44,85,0.25), rgba(37,244,238,0.15))',
+        }}
+      >
+        <div className="bg-[#111] rounded-2xl overflow-hidden">
+          {children}
+        </div>
+      </div>
     </motion.article>
   )
 }
