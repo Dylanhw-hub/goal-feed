@@ -114,56 +114,67 @@ export default function Feed() {
 
   return (
     <div className="min-h-dvh bg-black">
-      {/* TikTok-style splash intro */}
+      {/* TikTok-style FYP splash intro */}
       <AnimatePresence>
         {!splashDismissed && (
           <motion.div
             key="splash"
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black overflow-hidden"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] bg-black overflow-hidden"
           >
-            {/* Animated gradient background */}
+            {/* Background — dark gradient simulating a video */}
             <div className="absolute inset-0">
               <div
-                className="absolute inset-0 opacity-30"
+                className="absolute inset-0"
                 style={{
-                  background: 'radial-gradient(circle at 30% 20%, #fe2c55 0%, transparent 50%), radial-gradient(circle at 70% 80%, #25f4ee 0%, transparent 50%)',
+                  background: 'linear-gradient(160deg, #0a0a0a 0%, #111 30%, #0d1117 60%, #0a0a0a 100%)',
                 }}
               />
-              {/* Floating particles */}
+              {/* Subtle animated color wash */}
               <motion.div
-                animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute top-[20%] left-[15%] w-32 h-32 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(254,44,85,0.15) 0%, transparent 70%)' }}
-              />
-              <motion.div
-                animate={{ y: [15, -15, 15], x: [10, -10, 10] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute bottom-[25%] right-[10%] w-40 h-40 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(37,244,238,0.12) 0%, transparent 70%)' }}
+                animate={{ opacity: [0.15, 0.25, 0.15] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute inset-0"
+                style={{
+                  background: 'radial-gradient(ellipse at 40% 50%, rgba(254,44,85,0.2) 0%, transparent 60%), radial-gradient(ellipse at 60% 60%, rgba(37,244,238,0.12) 0%, transparent 50%)',
+                }}
               />
             </div>
 
-            {/* Content */}
+            {/* Top bar — "Following | For You" */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 flex flex-col items-center px-8 text-center"
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="absolute top-0 left-0 right-0 z-20 pt-12 pb-3"
             >
+              <div className="flex items-center justify-center gap-4">
+                <span className="text-white/40 text-[15px] font-semibold">Following</span>
+                <span className="text-white/10">|</span>
+                <span className="text-white text-[15px] font-bold relative">
+                  For You
+                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-8 h-[3px] rounded-full bg-white" />
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Center — Big GoalFeed branding */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="text-7xl mb-6"
+                initial={{ scale: 0, rotate: -20 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="text-8xl mb-4"
               >
                 🎯
               </motion.div>
 
-              <h1
-                className="text-4xl font-extrabold tracking-tight mb-3"
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="text-6xl font-black tracking-tighter leading-none mb-2"
                 style={{
                   background: 'linear-gradient(135deg, #fe2c55, #ff6b81, #25f4ee)',
                   WebkitBackgroundClip: 'text',
@@ -171,49 +182,132 @@ export default function Feed() {
                 }}
               >
                 GoalFeed
-              </h1>
+              </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-white/50 text-base mb-2 max-w-[280px]"
+                transition={{ delay: 0.8, duration: 0.5 }}
+                className="text-white/50 text-sm font-medium"
               >
-                Learn to set goals that actually work
+                Set goals that actually work
               </motion.p>
+            </div>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="text-white/30 text-xs mb-10"
-              >
-                Scroll. React. Learn.
-              </motion.p>
+            {/* Right side — TikTok-style action icons */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+              className="absolute right-3 bottom-[180px] z-20 flex flex-col items-center gap-5"
+            >
+              {/* Profile */}
+              <div className="flex flex-col items-center">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#fe2c55] to-[#25f4ee] flex items-center justify-center text-lg ring-2 ring-black">
+                  🎯
+                </div>
+                <div className="w-5 h-5 rounded-full bg-[#fe2c55] flex items-center justify-center -mt-2.5 border-2 border-black">
+                  <span className="text-white text-[10px] font-bold leading-none">+</span>
+                </div>
+              </div>
 
-              <motion.button
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                onClick={() => setSplashDismissed(true)}
-                className="relative px-10 py-3.5 rounded-full font-bold text-sm text-white overflow-hidden active:scale-95 transition-transform"
-                style={{
-                  background: 'linear-gradient(135deg, #fe2c55, #25f4ee)',
-                }}
-              >
-                <span className="relative z-10">Start scrolling</span>
-              </motion.button>
+              {/* Heart */}
+              <div className="flex flex-col items-center gap-0.5">
+                <motion.div
+                  animate={{ scale: [1, 1.15, 1] }}
+                  transition={{ delay: 2, duration: 0.4 }}
+                  className="text-2xl"
+                >
+                  ❤️
+                </motion.div>
+                <span className="text-white text-[11px] font-semibold">4.2K</span>
+              </div>
+
+              {/* Comment */}
+              <div className="flex flex-col items-center gap-0.5">
+                <span className="text-2xl">💬</span>
+                <span className="text-white text-[11px] font-semibold">847</span>
+              </div>
+
+              {/* Share */}
+              <div className="flex flex-col items-center gap-0.5">
+                <span className="text-2xl">↗️</span>
+                <span className="text-white text-[11px] font-semibold">Share</span>
+              </div>
             </motion.div>
 
-            {/* Bottom hint */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.4, 0] }}
-              transition={{ delay: 2, duration: 3, repeat: Infinity }}
-              className="absolute bottom-8 text-xs text-white/30"
+            {/* Bottom left — username & description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+              className="absolute left-4 right-16 bottom-[90px] z-20"
             >
-              swipe up
-            </motion.p>
+              <p className="text-white font-bold text-[15px] mb-1">@goalfeed</p>
+              <p className="text-white/80 text-[13px] leading-relaxed mb-2">
+                Stop setting goals that fail. Learn the difference between a wish and a plan. 🎯
+              </p>
+              <p className="text-white/80 text-[13px] font-semibold">#goals #studytok #motivation #growthmindset</p>
+              <div className="flex items-center gap-1.5 mt-2">
+                <span className="text-[11px]">🎵</span>
+                <p className="text-white/60 text-xs">original sound — goalfeed</p>
+              </div>
+            </motion.div>
+
+            {/* Bottom CTA button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+              className="absolute bottom-[28px] left-0 right-0 z-30 flex justify-center"
+            >
+              <button
+                onClick={() => setSplashDismissed(true)}
+                className="px-12 py-3 rounded-full font-bold text-sm text-white active:scale-95 transition-transform"
+                style={{
+                  background: 'linear-gradient(135deg, #fe2c55, #25f4ee)',
+                  boxShadow: '0 0 30px rgba(254,44,85,0.3), 0 0 60px rgba(37,244,238,0.15)',
+                }}
+              >
+                Start scrolling →
+              </button>
+            </motion.div>
+
+            {/* Bottom nav bar — fake TikTok nav */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="absolute bottom-0 left-0 right-0 z-20 pb-1 pt-2 bg-black/60 backdrop-blur-sm border-t border-white/5"
+            >
+              <div className="flex items-end justify-around px-2 pb-1">
+                <div className="flex flex-col items-center gap-0.5">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5"><path d="M12 3L4 9v12h5v-7h6v7h5V9z"/></svg>
+                  <span className="text-white text-[10px] font-semibold">Home</span>
+                </div>
+                <div className="flex flex-col items-center gap-0.5 opacity-40">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5"><circle cx="11" cy="11" r="7" fill="none" stroke="white" strokeWidth="2"/><path d="M16 16l4 4" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
+                  <span className="text-white text-[10px]">Discover</span>
+                </div>
+                <div className="flex flex-col items-center -mt-2">
+                  <div className="w-10 h-7 rounded-lg overflow-hidden relative">
+                    <div className="absolute inset-0 rounded-lg bg-[#25f4ee] translate-x-[-3px]" />
+                    <div className="absolute inset-0 rounded-lg bg-[#fe2c55] translate-x-[3px]" />
+                    <div className="absolute inset-0 rounded-lg bg-white flex items-center justify-center">
+                      <span className="text-black text-xl font-light leading-none">+</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center gap-0.5 opacity-40">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                  <span className="text-white text-[10px]">Inbox</span>
+                </div>
+                <div className="flex flex-col items-center gap-0.5 opacity-40">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                  <span className="text-white text-[10px]">Me</span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
