@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { characters, PollPostData } from '@/data/content'
-import Avatar from './Avatar'
+import { PollPostData } from '@/data/content'
 import PostCard from './PostCard'
 
 interface PollPostProps {
@@ -14,7 +13,6 @@ interface PollPostProps {
 
 export default function PollPost({ data, onVote, delay }: PollPostProps) {
   const [voted, setVoted] = useState<number | null>(null)
-  const char = characters[data.characterId]
 
   // Simulate realistic vote distribution
   const fakePercents = data.correctIndex === 1 ? [28, 72] : [72, 28]
@@ -30,20 +28,27 @@ export default function PollPost({ data, onVote, delay }: PollPostProps) {
   return (
     <PostCard delay={delay}>
       <div className="px-4 pt-4 pb-3">
-        {/* Header */}
+        {/* Header — GoalFeed system post, not a character */}
         <div className="flex items-center gap-3 mb-3">
-          <Avatar characterId={data.characterId} />
+          <div
+            className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-black shrink-0"
+            style={{
+              background: 'linear-gradient(135deg, #fe2c55, #25f4ee)',
+            }}
+          >
+            GF
+          </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-sm">{char.name}</span>
-              <span className="text-xs text-white/30">{char.handle}</span>
+              <span className="font-bold text-sm gradient-text">GoalFeed</span>
+              <span className="text-xs text-[#25f4ee]/50">Poll</span>
             </div>
             <span className="text-xs text-white/30">{data.timeAgo}</span>
           </div>
         </div>
 
         {/* Question */}
-        <p className="text-[15px] leading-relaxed whitespace-pre-line mb-4 text-white/90">
+        <p className="text-[15px] leading-relaxed whitespace-pre-line mb-4 text-[#25f4ee]/70">
           {data.question}
         </p>
 
