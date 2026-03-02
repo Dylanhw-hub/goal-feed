@@ -160,37 +160,40 @@ export default function Feed() {
             </motion.div>
 
             {/* Center — Big GoalFeed branding */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-6">
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4">
               <motion.div
                 initial={{ scale: 0, rotate: -20 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="text-8xl mb-4"
+                className="mb-3"
+                style={{ fontSize: '5.5rem' }}
               >
                 🎯
               </motion.div>
 
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="text-6xl font-black tracking-tighter leading-none mb-2"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="font-black tracking-tighter leading-[0.85] mb-3 text-center"
                 style={{
-                  background: 'linear-gradient(135deg, #fe2c55, #ff6b81, #25f4ee)',
+                  fontSize: 'clamp(4.5rem, 18vw, 7rem)',
+                  background: 'linear-gradient(135deg, #fe2c55 0%, #ff6b81 40%, #25f4ee 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 0 40px rgba(254,44,85,0.3)) drop-shadow(0 0 80px rgba(37,244,238,0.15))',
                 }}
               >
-                GoalFeed
+                Goal<br />Feed
               </motion.h1>
 
               <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="text-white/50 text-sm font-medium"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                className="text-white/60 text-base font-semibold tracking-wide uppercase"
               >
-                Set goals that actually work
+                Set goals that hit
               </motion.p>
             </div>
 
